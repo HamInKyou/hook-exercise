@@ -1,27 +1,9 @@
-import useTabs from "./useTabs";
-
-const content = [
-  {
-    tab: "Section 1",
-    content: "I'm the content of the Section 1",
-  },
-  {
-    tab: "Section 2",
-    content: "I'm the content of the Section 2",
-  },
-];
+import useTitle from "./useTitle";
 
 function App() {
-  const { currentItem, changeItem } = useTabs(0, content);
-
-  return (
-    <>
-      {content.map((section, index) => (
-        <button onClick={() => changeItem(index)}>{section.tab}</button>
-      ))}
-      <div>{currentItem.content}</div>
-    </>
-  );
+  const titleUpdator = useTitle("Loading...");
+  setTimeout(() => titleUpdator("Home"), 5000);
+  return <div className="App"></div>;
 }
 
 export default App;
