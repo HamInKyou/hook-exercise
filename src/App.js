@@ -1,13 +1,13 @@
-import useHover from "./useHover";
+import useConfirm from "./useConfirm";
 
 function App() {
-  const sayHello = () => {
-    console.log("Hello!");
-  };
-  const title = useHover(sayHello);
+  const deleteWorld = () => console.log("Deleting the world");
+  const abort = () => console.log("Aborted");
+  const confirmDelete = useConfirm("Are you sure", deleteWorld, abort);
+
   return (
     <div className="App">
-      <h1 ref={title}>Hi!</h1>
+      <button onClick={confirmDelete}>Delete the world</button>
     </div>
   );
 }
