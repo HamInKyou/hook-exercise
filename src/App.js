@@ -1,9 +1,15 @@
-import useTitle from "./useTitle";
+import useClick from "./useClick";
 
 function App() {
-  const titleUpdator = useTitle("Loading...");
-  setTimeout(() => titleUpdator("Home"), 5000);
-  return <div className="App"></div>;
+  const sayHello = () => {
+    console.log("Hello!");
+  };
+  const title = useClick(sayHello);
+  return (
+    <div className="App">
+      <h1 ref={title}>Hi!</h1>
+    </div>
+  );
 }
 
 export default App;
