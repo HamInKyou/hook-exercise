@@ -1,12 +1,15 @@
-import useNotification from "./useNotification";
+import useAxios from "./useAxios";
 
 function App() {
-  const triggerNotification = useNotification("Hello!", {
-    body: "Hello friends!",
+  const { loading, error, data, refetch } = useAxios({
+    url: "https://yts-proxy.now.sh/list_movies.json",
   });
   return (
     <div className="App">
-      <button onClick={triggerNotification}>Hello</button>
+      <button onClick={refetch}>Refecth</button>
+      <h1>{data && data.status}</h1>
+      <h2>{loading ? "Loading" : "Done"}</h2>
+      <p>{error && "error"}</p>
     </div>
   );
 }
